@@ -887,11 +887,11 @@ RSpec.describe Mysql2::Client do
       end.not_to raise_error
     end
 
-    it "should require an open connection" do
+    it "should not require an open connection" do
       @client.close
       expect do
         @client.escape ""
-      end.to raise_error(Mysql2::Error)
+      end.not_to raise_error
     end
 
     context 'when mysql encoding is not utf8' do
